@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpasquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/26 11:23:16 by gpasquet          #+#    #+#             */
-/*   Updated: 2022/10/10 17:57:43 by gpasquet         ###   ########.fr       */
+/*   Created: 2022/10/09 13:24:00 by gpasquet          #+#    #+#             */
+/*   Updated: 2022/10/10 10:36:07 by gpasquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int c)
+#include "libft.h"
+
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	else
-		return (0);
+	t_list	*l;
+
+	if (!lst || !del)
+		return ;
+	l = *lst;
+	while (*lst)
+	{
+		l = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = l;
+	}
 }

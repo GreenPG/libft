@@ -6,7 +6,7 @@
 /*   By: gpasquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 14:39:11 by gpasquet          #+#    #+#             */
-/*   Updated: 2022/09/29 12:01:55 by gpasquet         ###   ########.fr       */
+/*   Updated: 2022/10/10 17:12:02 by gpasquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@ char	*ft_strchr(const char *s, int c)
 	int	i;
 
 	c = c % 256;
-	i = -1;
-	while (s[++i])
+	i = 0;
+	while (s[i])
 	{
 		if (s[i] == c)
 			return ((char *)&s[i]);
+		i++;
 	}
 	if (s[i] == c)
 		return ((char *)&s[i]);

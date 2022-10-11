@@ -6,11 +6,11 @@
 /*   By: gpasquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 14:12:22 by gpasquet          #+#    #+#             */
-/*   Updated: 2022/09/30 12:31:42 by gpasquet         ###   ########.fr       */
+/*   Updated: 2022/10/11 13:51:37 by gpasquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
@@ -22,19 +22,20 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 
 	news1 = s1;
 	news2 = s2;
-		i = -1;
-	while (++i < n)
+	i = 0;
+	while (i < n)
 	{
 		if (news1[i] != news2[i])
 		{
-			a = news1[i] % 126;
+			a = news1[i] % 256;
 			if (a < 0)
-				a = -a;
-			b = news2[i] % 126;
+				a += 256;
+			b = news2[i] % 256;
 			if (b < 0)
-				b = -b;
+				b += 256;
 			return (a - b);
 		}
+		i++;
 	}
 	return (0);
 }
